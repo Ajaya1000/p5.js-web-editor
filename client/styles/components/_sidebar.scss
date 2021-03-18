@@ -65,7 +65,7 @@
   @include themify() {
     color: map-get($theme-map, 'primary-text-color');
     // TODO get this to not affect parent, need to move it into JS
-    &:hover:not(.sidebar__file-item--selected) > .file-item__content {
+    &:hover:not(.sidebar__file-item--selected) > .file-item__content:hover {
       background-color: map-get($theme-map, 'file-hover-color');
     }
   }
@@ -165,7 +165,7 @@
       display: none;
     }
   }
-  .sidebar__file-item:hover > .file-item__content & {
+  .sidebar__file-item:hover > .file-item__content:hover & {
     display: inline-block;
     .sidebar--cant-edit & {
       display: none;
