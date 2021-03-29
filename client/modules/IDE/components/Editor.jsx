@@ -27,6 +27,11 @@ import 'codemirror/addon/search/jump-to-line';
 import 'codemirror/addon/edit/matchbrackets';
 import 'codemirror/addon/edit/closebrackets';
 import 'codemirror/addon/selection/mark-selection';
+import 'codemirror/mode/javascript/javascript';
+import 'codemirror/addon/selection/active-line';
+import 'codemirror/addon/comment/comment';
+import 'codemirror/addon/dialog/dialog';
+import 'codemirror/addon/hint/show-hint';
 
 import { JSHINT } from 'jshint';
 import { CSSLint } from 'csslint';
@@ -59,6 +64,7 @@ import * as PreferencesActions from '../actions/preferences';
 import * as UserActions from '../../User/actions';
 import * as ToastActions from '../actions/toast';
 import * as ConsoleActions from '../actions/console';
+import TernServer from '../../../installTern';
 
 emmet(CodeMirror);
 
@@ -126,6 +132,7 @@ class Editor extends React.Component {
         }
       }
     });
+    this.tern = TernServer(this._cm);
 
     delete this._cm.options.lint.options.errors;
 
