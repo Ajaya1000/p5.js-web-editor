@@ -156,7 +156,14 @@ class Editor extends React.Component {
       [`${metaKey}-F`]: 'findPersistent',
       [`${metaKey}-G`]: 'findPersistentNext',
       [`Shift-${metaKey}-G`]: 'findPersistentPrev',
-      [replaceCommand]: 'replace'
+      [replaceCommand]: 'replace',
+      'Ctrl-Space': (_cm) => this.tern.complete(_cm),
+      'Ctrl-I': (_cm) => this.tern.showType(_cm),
+      'Ctrl-O': (_cm) => this.tern.showDocs(_cm),
+      'Alt-.': (_cm) => this.tern.jumpToDef(_cm),
+      'Alt-,': (_cm) => this.tern.jumpBack(_cm),
+      'Ctrl-Q': (_cm) => this.tern.rename(_cm),
+      'Ctrl-.': (_cm) => this.tern.selectName(_cm)
     });
 
     this.initializeDocuments(this.props.files);
